@@ -64,6 +64,7 @@ class Register extends Component {
 
                     db.ref('/user/' + userCredentials.user.uid)
                         .set({
+                            uid: userCredentials.user.uid,
                             name: this.state.name,
                             status: 'Online',
                             email: this.state.email,

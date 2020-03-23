@@ -2,6 +2,8 @@
   package="com.apakapps">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
       android:name=".MainApplication"
@@ -20,7 +22,9 @@
               <category android:name="android.intent.category.LAUNCHER" />
           </intent-filter>
         </activity>
-
+        <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyCIacWawY3bNFLqvjk0Z567pySPK2L7z7I"/>
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

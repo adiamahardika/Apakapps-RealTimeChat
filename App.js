@@ -5,6 +5,7 @@ import SplashScreen from 'react-native-splash-screen'
 import LoginScreen from './source/screen/login/Login';
 import RegisterScreen from './source/screen/register/Register';
 import HomeScreen from './source/screen/home/Home';
+import ChatScreen from './source/screen/chat/Chat';
 
 const homeNavigator = createStackNavigator(
   {
@@ -19,6 +20,9 @@ const homeNavigator = createStackNavigator(
     },
     Home:{
       screen: HomeScreen
+    },
+    Chat :{
+      screen: ChatScreen
     }
   },
   {

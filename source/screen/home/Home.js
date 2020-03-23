@@ -2,25 +2,29 @@ import React, {Component} from 'react'
 import { StyleSheet } from 'react-native'
 import { Container, Tab, Tabs, Text, TabHeading } from 'native-base';
 import {withNavigation} from 'react-navigation'
-
+import ListChat from '../chat/ListChat'
+import Maps from '../maps/Maps'
 class HomeScreen extends Component{
     static navigationOptions = {
         headerShown: false
     };
+    state = {
+      users: []
+    }
     
     render(){
         console.disableYellowBox = true
         return(
         <Container>
         <Tabs tabContainerStyle={{ elevation: 0 }}>
-          <Tab heading={<TabHeading style={ styles.tabHeading }><Text style={ styles.textHeading }>Contact</Text></TabHeading>}>
-          <Text>Contact</Text>
+          <Tab heading={<TabHeading style={ styles.tabHeading }><Text style={ styles.textHeading }>Maps</Text></TabHeading>}>
+          <Maps/>
           </Tab>
           <Tab heading={<TabHeading style={ styles.tabHeading }><Text style={ styles.textHeading }>ListChat</Text></TabHeading>}>
-          <Text>ListChat</Text>
+          <ListChat/>
           </Tab>
           <Tab heading={<TabHeading style={ styles.tabHeading }><Text style={ styles.textHeading }>Setting</Text></TabHeading>}>
-            <Text>ListChat</Text>
+            <Text>Setting</Text>
           </Tab>
         </Tabs>
       </Container>
