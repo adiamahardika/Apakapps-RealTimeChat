@@ -4,6 +4,7 @@ import { Container, Header, Content, Form, Item, Input, Thumbnail, Label, Button
 import { auth, db  } from "../../config/Config";
 import BgImage from '../../images/background.png'
 import Logo from '../../images/apakapps-01.png'
+import GetLocation from 'react-native-get-location'
 class Register extends Component {
     static navigationOptions = {
         headerShown: false
@@ -22,11 +23,26 @@ class Register extends Component {
             errorMessage: null,
             loading: false,
             updatesEnabled: false,
+            location: []
         }
         this.handleSignUp = this.handleSignUp.bind(this);
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        await GetLocation.getCurrentPosition({
+            enableHighAccuracy: true,
+                timeout: 15000,
+            })
+            .then(location => {
+                console.log(location);
+              this.setState({
+                  location : location
+                })
+            })
+            .catch(error => {
+                const { code, message } = error;
+                console.warn(code, message);
+            })
         this._isMounted = true;
 
     };
@@ -68,7 +84,9 @@ class Register extends Component {
                             name: this.state.name,
                             status: 'Online',
                             email: this.state.email,
-                            photo: "http://photourl.com/photo"
+                            photo: "http://photourl.com/photo",
+                            longitude: this.state.location.longitude,
+                            latitude: this.state.location.latitude
                         })
                         .catch(error => console.log(error.message))
 

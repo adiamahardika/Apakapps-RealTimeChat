@@ -4,14 +4,38 @@ import { Container, Tab, Tabs, Text, TabHeading } from 'native-base';
 import {withNavigation} from 'react-navigation'
 import ListChat from '../chat/ListChat'
 import Maps from '../maps/Maps'
+import GetLocation from 'react-native-get-location'
+import { db, auth } from '../../config/Config';
 class HomeScreen extends Component{
     static navigationOptions = {
         headerShown: false
     };
     state = {
-      users: []
+      users: [],
+      latitude: '',
+      longitude: ''
     }
-    
+
+    getLocation(){
+      const id = auth.currentUser.uid
+      GetLocation.getCurrentPosition({
+        enableHighAccuracy: true,
+        timeout: 15000
+      })
+      .then(location => {
+        db.ref('/user/' + id ).child("latitude").set(location.latitude)
+        db.ref('/user/' + id ).child("longitude").set(location.longitude)
+      })
+      .catch(error => {
+        const { code, message} = error;
+        console.warn(code, message);
+      })
+      this._isMounted = true;
+    }
+
+    componentDidMount(){
+      this.getLocation()
+    }
     render(){
         console.disableYellowBox = true
         return(
