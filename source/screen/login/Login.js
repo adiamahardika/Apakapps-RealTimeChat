@@ -140,11 +140,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     textLogoStyle:{
-        fontSize: 15,
-        color: '#361040'
-    },
-    textTitleStyle: {
-        fontSize: 15,
+        fontSize: 20,
         color: '#361040'
     },
     formLoginStyle:{
@@ -155,11 +151,11 @@ const styles = StyleSheet.create({
     inputStyle:{
         color: '#361040',
         marginBottom: 6,
-        fontSize:14
+        fontSize:20
     },
     footerBottomStyle:{
         marginTop: 26,
-        paddingTop: 10,
+        padding: 10,
         marginLeft: 16,
         marginRight:16,
         backgroundColor: '#361040',
@@ -168,7 +164,7 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     loginButton:{
-        fontSize: 18,
+        fontSize: 20,
         color:'white',
         fontWeight: 'bold',
         padding: 'auto'

@@ -145,7 +145,7 @@ class Register extends Component {
                     </Form>
                     <Button onPress={this.handleSignUp} style={styles.footerBottomStyle} >
                         <Text style={styles.registerButton}>
-                            SIGN UP
+                            REGISTER
                         </Text>
                     </Button>
             </Container>
@@ -164,6 +164,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
+    textLogoStyle:{
+        fontSize: 20,
+        color: '#361040'
+    },
     logoStyle:{
         marginTop:90,
         marginBottom: 80,
@@ -178,22 +182,22 @@ const styles = StyleSheet.create({
     inputStyle:{
         color: '#361040',
         marginBottom: 6,
-        fontSize:14
+        fontSize:20
     },
     footerBottomStyle:{
         marginTop: 26,
-        paddingTop: 10,
+        padding: 10,
         marginLeft: 16,
         marginRight:16,
         backgroundColor: '#361040',
         borderRadius: 25,
         justifyContent: 'center',
-        alignItems:'center'
+        alignItems:'center',
     },
     registerButton:{
         color:'white',
         fontWeight: 'bold',
-        padding: 'auto'
+        fontSize: 20
     },
 })
 export default Register;
