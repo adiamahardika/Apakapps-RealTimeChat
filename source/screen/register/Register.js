@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, ToastAndroid, StyleSheet, Image } from 'react-native';
+import { View, Text, ToastAndroid, StyleSheet, Image, AsyncStorage } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Thumbnail, Label, Button } from 'native-base';
 import { auth, db  } from "../../config/Config";
-import BgImage from '../../images/background.png'
-import Logo from '../../images/apakapps-01.png'
-import GetLocation from 'react-native-get-location'
+import BgImage from '../../images/background.png';
+import Logo from '../../images/apakapps-01.png';
+import GetLocation from 'react-native-get-location';
+import User from '../../global/User'
 class Register extends Component {
     static navigationOptions = {
         headerShown: false
@@ -76,6 +77,8 @@ class Register extends Component {
         } else {
             // Action
             await auth.createUserWithEmailAndPassword(email, password)
+            await AsyncStorage.setItem('uid', this.state.uid);
+            User.uid = this.state.uid
                 .then(async userCredentials => {
 
                     db.ref('/user/' + userCredentials.user.uid)

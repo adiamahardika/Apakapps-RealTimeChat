@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList, AsyncStorage, Image } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import { auth, db } from '../../config/Config'
 
@@ -33,9 +33,15 @@ class ListChat extends Component {
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat', item)}>
                 <View style={{ flexDirection: 'row', marginVertical: 10 }}>
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <Image
+                    source={
+                        item.image ? {uri: item.image} : require('../../images/profile.png')
+                    }
+                    style={{ width: 50, height: 50, resizeMode: 'contain', borderRadius: 32, resizeMode: 'cover', marginRight: 5, }}
+                    />
                     </View>
                     <View style={{ flex: 2, borderColor: '#361040', borderBottomWidth: 1, marginTop: 5 }}>
-                        <Text style={{ fontSize: 15 }}>{item.name}</Text>
+                        <Text style={{ fontSize: 20 }}>{item.name}</Text>
                     </View>
                 </View>
             </TouchableOpacity>

@@ -2,10 +2,11 @@ import React, {Component} from 'react'
 import { StyleSheet } from 'react-native'
 import { Container, Tab, Tabs, Text, TabHeading } from 'native-base';
 import {withNavigation} from 'react-navigation'
-import ListChat from '../chat/ListChat'
-import Maps from '../maps/Maps'
 import GetLocation from 'react-native-get-location'
 import { db, auth } from '../../config/Config';
+import ListChat from '../chat/ListChat'
+import Maps from '../maps/Maps'
+import UserProfile from '../profile/UserProfile'
 class HomeScreen extends Component{
     static navigationOptions = {
         headerShown: false
@@ -44,11 +45,11 @@ class HomeScreen extends Component{
           <Tab heading={<TabHeading style={ styles.tabHeading }><Text style={ styles.textHeading }>Maps</Text></TabHeading>}>
           <Maps/>
           </Tab>
-          <Tab heading={<TabHeading style={ styles.tabHeading }><Text style={ styles.textHeading }>ListChat</Text></TabHeading>}>
+          <Tab heading={<TabHeading style={ styles.tabHeading }><Text style={ styles.textHeading }>Chat</Text></TabHeading>}>
           <ListChat/>
           </Tab>
           <Tab heading={<TabHeading style={ styles.tabHeading }><Text style={ styles.textHeading }>Setting</Text></TabHeading>}>
-            <Text>Setting</Text>
+            <UserProfile/>
           </Tab>
         </Tabs>
       </Container>

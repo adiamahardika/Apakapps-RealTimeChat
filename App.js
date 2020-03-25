@@ -6,6 +6,7 @@ import LoginScreen from './source/screen/login/Login';
 import RegisterScreen from './source/screen/register/Register';
 import HomeScreen from './source/screen/home/Home';
 import ChatScreen from './source/screen/chat/Chat';
+import UserProfile from './source/screen/profile/UserProfile';
 
 const homeNavigator = createStackNavigator(
   {
@@ -23,6 +24,9 @@ const homeNavigator = createStackNavigator(
     },
     Chat :{
       screen: ChatScreen
+    },
+    UserProfile:{
+      screen: UserProfile
     }
   },
   {
