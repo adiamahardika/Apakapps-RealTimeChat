@@ -1,14 +1,26 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Dimensions, StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Dimensions, StyleSheet, Image } from 'react-native'
 import { db, auth, time } from '../../config/Config'
 import { FlatList } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 class ChatScreen extends Component {
     static navigationOptions = ({ navigation }) => {
+        const id = navigation.getParam('uid');
+        const status = navigation.getParam('status');
         return {
-            title: navigation.getParam('name', null)
+            headerTitle: (
+                <TouchableOpacity onPress={() => navigation.navigate('FriendProfile', id)}>
+                    <View style={{ flexDirection: 'row', marginVertical: 5 }}>
+                    <Image source={()=> navigation.getParam('images', null)}/>
+                  <Text style={{fontWeight: 'bold', fontSize: 20}}>
+                    {navigation.getParam('name', null)}
+                  </Text>
+                  </View>
+                </TouchableOpacity>
+              )
+            }
         }
-    }
+
 
     constructor(props){
         super(props);
@@ -91,7 +103,7 @@ class ChatScreen extends Component {
                         <View style={{ flex: 5, paddingLeft: 20, paddingRight: 10 }}>
                             <Text style={{color:'white', fontSize:20}}>{item.message}</Text>
                         </View>
-                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }}>
                             <Text style={{ top: 5, color:'white', fontSize:15 }}>{this.convertTime(item.time)}
                             </Text>
                         </View>

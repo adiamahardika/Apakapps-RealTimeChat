@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { Text } from 'react-native'
-import { db } from '../congfig/Config'
+import { db } from '../../config/Config'
 
 export default class FriendProfile extends Component {
     state = {

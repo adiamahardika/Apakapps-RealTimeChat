@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { View, Text, ActivityIndicator, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, Text, ActivityIndicator, TouchableOpacity, Image, Alert, StyleSheet } from 'react-native';
+import { Button } from 'native-base'
 import {auth, db} from '../../config/Config';
 import ImagePicker from 'react-native-image-picker';
 import firebase from 'firebase';
@@ -13,10 +14,14 @@ class UserProfile extends Component {
     imageSource: User.image ? {uri: User.image} : require('../../images/profile.png'),
     upload: false,
   };
+
   onLogout = async () => {
-      const id = auth.currentUser.uid
-      await db.ref('/user/' + id ).child("status").set('offline')
+      // const id = auth.currentUser.uid
+      // await db.ref('/user/' + id ).child("status").set('Offline')
     auth.signOut().then(res => console.warn('oke'));
+        // auth.signOut()
+        // .then(res =>(this.props.navigation.navigate('Login'))
+        // )
   };
 
   changeImage = () => {
@@ -117,14 +122,34 @@ class UserProfile extends Component {
               />
             )}
           </TouchableOpacity>
-          <Text>{auth.currentUser.displayName}</Text>
-          <TouchableOpacity onPress={this.onLogout}>
+          <Text style={{fontSize:20, fontWeight: 'bold'}}>{auth.currentUser.displayName}</Text>
+          {/* <TouchableOpacity onPress={this.onLogout}>
             <Text>Logout</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+           <Button onPress={this.onLogout} style={styles.footerBottomStyle}>
+              <Text style={styles.logoutButton}>LOGOUT</Text>
+          </Button>
         </View>
       </>
     );
   }
 }
-
+const styles = StyleSheet.create({
+  footerBottomStyle:{
+    marginTop: 26,
+    padding: 10,
+    marginLeft: 16,
+    marginRight:16,
+    backgroundColor: '#361040',
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems:'center'
+  },
+  logoutButton:{
+      fontSize: 20,
+      color:'white',
+      fontWeight: 'bold',
+      padding: 'auto'
+  },
+})
 export default UserProfile;
